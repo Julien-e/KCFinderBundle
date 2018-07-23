@@ -17,20 +17,20 @@
 // See http://kcfinder.sunhater.com/install for setting descriptions
 
 $base =  __DIR__ . '/../../../../../../';
-require_once $base.'app/autoload.php';
+require_once $base.'vendor/autoload.php';
 use Symfony\Component\Yaml\Parser;
 
 $yaml = new Parser();
-$config = $yaml->parse(file_get_contents($base.'/app/config/config.yml'));
+$config = $yaml->parse(file_get_contents($base.'config/packages/lib_kc_finder.yaml'));
 
 $upload_dir = __DIR__ . '/../../../../../../web/upload'; // in web
 $upload_url = "http://{$_SERVER['HTTP_HOST']}/upload";
 
-if (key_exists('lib_kc_finder', $config)){
-    if (key_exists('upload_url', $config['lib_kc_finder'])){
+if (key_exists('lib_kc_finder', $config)) {
+    if (key_exists('upload_url', $config['lib_kc_finder'])) {
         $upload_dir = __DIR__ . '/../../../../../../'.$config['lib_kc_finder']['upload_dir'];
     }
-    if (key_exists('upload_dir', $config['lib_kc_finder'])){
+    if (key_exists('upload_dir', $config['lib_kc_finder'])) {
         $upload_url = $config['lib_kc_finder']['upload_url'];
     }
 }
@@ -119,5 +119,3 @@ $_CONFIG = array(
     //'_sessionDomain' => ".mysite.com",
     //'_sessionPath' => "/my/path",
 );
-
-?>
