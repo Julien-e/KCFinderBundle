@@ -23,7 +23,7 @@ use Symfony\Component\Yaml\Parser;
 $yaml = new Parser();
 $config = $yaml->parse(file_get_contents($base.'config/packages/lib_kc_finder.yaml'));
 
-$upload_dir = __DIR__ . '/../../../../../../web/upload'; // in web
+$upload_dir = __DIR__ . '/../../../../../../public/upload'; // in web
 $upload_url = "http://{$_SERVER['HTTP_HOST']}/upload";
 
 if (key_exists('lib_kc_finder', $config)) {
